@@ -13,6 +13,7 @@ Hexagonal (ports and adapters), one .NET project per layer per context, so the c
 
 ```text
 src/Bank.Api                      driving adapters: HTTP endpoints, composition root
+src/Bank.Kernel                   shared kernel: DomainError only
 src/<Context>.Application         use cases, driving ports, driven ports
 src/<Context>.Domain              aggregates, value objects, business rules, errors
 src/<Context>.Infrastructure      driven adapters, AddInfrastructure() registration
@@ -27,6 +28,7 @@ Use case commands and results carry only primitives (`Guid`, `decimal`, `string`
 | Relation | Pattern | What crosses |
 | --- | --- | --- |
 | Transfers → Accounts | customer–supplier: Accounts publishes `MoveMoney` (open host service); Transfers keeps an anti-corruption layer, its `AccountsContextGateway`, which translates Accounts' errors into its own | `MoveMoney`'s command and result, and three error codes |
+| every context ↔ `Bank.Kernel` | shared kernel, kept to one type: `DomainError`, a refusal with its code and its kind (invalid, not found, refused), which the API answers as 400, 404 or 422 | nothing else; a value object or rule never moves there |
 
 ## How a change flows
 
