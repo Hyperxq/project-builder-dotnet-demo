@@ -1,4 +1,3 @@
-@draft
 Feature: Get a transfer
   A holder reads a transfer the bank made, by the id they got when they sent it.
 

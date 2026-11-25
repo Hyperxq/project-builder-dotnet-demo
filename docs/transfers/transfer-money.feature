@@ -1,4 +1,3 @@
-@draft
 Feature: Transfer money
   A holder sends money from an account to another account, and the bank records the transfer.
   Either the money leaves the source and arrives in the destination, or nothing changes.

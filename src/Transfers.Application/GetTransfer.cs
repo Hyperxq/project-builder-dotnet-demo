@@ -1,4 +1,5 @@
 using Transfers.Application.Ports;
+using Transfers.Domain;
 
 namespace Transfers.Application;
 
@@ -13,5 +14,9 @@ public interface IGetTransfer
 
 public sealed class GetTransfer(ITransferLog transferLog) : IGetTransfer
 {
-    public Task<GetTransferResult> Handle(GetTransferCommand command) => throw new NotImplementedException();
+    public async Task<GetTransferResult> Handle(GetTransferCommand command)
+    {
+        var transfer = await transferLog.ById(command.TransferId) ?? throw new TransferNotFound(command.TransferId);
+        return new GetTransferResult(transfer.Id, transfer.FromAccountId, transfer.ToAccountId, transfer.Amount.Value);
+    }
 }
