@@ -14,7 +14,7 @@ Hexagonal (ports and adapters), one .NET project per layer per context, so the c
 ```text
 src/Bank.Api                      driving adapters: HTTP endpoints, composition root
 src/Bank.Kernel                   shared kernel: DomainError only
-src/<Context>.Application         use cases, driving ports, driven ports
+src/<Context>.Application         use cases, each behind its driving port I<UseCase>; driven ports I<Port>
 src/<Context>.Domain              aggregates, value objects, business rules, errors
 src/<Context>.Infrastructure      driven adapters, AddInfrastructure() registration
 ```
@@ -51,7 +51,7 @@ The features in this folder are the acceptance suite: `tests/Bank.Acceptance` li
 | Schematic | Reads | Generates |
 | --- | --- | --- |
 | `hex-context` | the context name | the three projects, their references, the solution entries and the registration in `Bank.Api` |
-| `hex-driven-port` | a row of **Driven ports** | the port interface, the adapter named in *Adapter today* and its registration; an `InMemory…` adapter is generated working, any other adapter is generated as a stub to write by hand |
+| `hex-driven-port` | a row of **Driven ports** | the port interface, the adapter named in *Adapter today* as a stub whose methods are written by hand, and its registration (singleton for an `InMemory…` adapter, scoped otherwise) |
 | `hex-use-case` | a row of **Use cases** | the command, the result and the handler with its driven ports injected, and its registration |
 | `hex-endpoint` | a row of **Driving adapters** | the endpoint with its request validation and OpenAPI metadata, its mapping and an `.http` request |
 

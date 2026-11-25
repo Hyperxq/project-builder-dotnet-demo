@@ -7,7 +7,12 @@ public sealed record MoveMoneyCommand(Guid FromAccountId, Guid ToAccountId, deci
 
 public sealed record MoveMoneyResult(decimal FromBalance, decimal ToBalance);
 
-public sealed class MoveMoney(IAccounts accounts)
+public interface IMoveMoney
+{
+    Task<MoveMoneyResult> Handle(MoveMoneyCommand command);
+}
+
+public sealed class MoveMoney(IAccounts accounts) : IMoveMoney
 {
     // The checks run in the order docs/accounts/domain-model.md publishes: same account, existence, balance.
     public async Task<MoveMoneyResult> Handle(MoveMoneyCommand command)

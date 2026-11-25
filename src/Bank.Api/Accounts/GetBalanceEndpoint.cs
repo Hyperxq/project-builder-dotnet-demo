@@ -6,7 +6,7 @@ public static class GetBalanceEndpoint
 {
     public static RouteGroupBuilder MapGetBalance(this RouteGroupBuilder group)
     {
-        group.MapGet("/{accountId}/balance", async (Guid accountId, GetBalance useCase) =>
+        group.MapGet("/{accountId}/balance", async (Guid accountId, IGetBalance useCase) =>
                 TypedResults.Ok(await useCase.Handle(new GetBalanceCommand(accountId))))
             .WithName(nameof(GetBalance))
             .WithSummary("Get the balance")

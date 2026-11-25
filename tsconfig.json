@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "paths": {
+      "@pbuilder/sdk/csharp": ["/Users/danielramirez/.bun/install/global/node_modules/@pbuilder/sdk/dist/dialects/csharp/index.js"],
+      "@pbuilder/sdk/aspnet": ["/Users/danielramirez/.bun/install/global/node_modules/@pbuilder/sdk/dist/dialects/aspnet/index.js"],
+      "@pbuilder/sdk/msbuild": ["/Users/danielramirez/.bun/install/global/node_modules/@pbuilder/sdk/dist/dialects/msbuild/index.js"],
+      "@pbuilder/sdk/*": ["/Users/danielramirez/.bun/install/global/node_modules/@pbuilder/sdk/dist/*/index.js"]
+    }
+  }
+}

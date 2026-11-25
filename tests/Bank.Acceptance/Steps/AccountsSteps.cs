@@ -99,7 +99,7 @@ public sealed class AccountsSteps(ApiDriver api, Holders holders)
 
     // MoveMoney has no route: only the Transfers context calls it.
     private Task Move(Guid from, Guid to, decimal amount) =>
-        api.Run<MoveMoney>(async useCase => await useCase.Handle(new MoveMoneyCommand(from, to, amount)));
+        api.Run<IMoveMoney>(async useCase => await useCase.Handle(new MoveMoneyCommand(from, to, amount)));
 
     private Task ReadBalance(Guid accountId) => api.Send(HttpMethod.Get, $"/api/accounts/{accountId}/balance");
 }

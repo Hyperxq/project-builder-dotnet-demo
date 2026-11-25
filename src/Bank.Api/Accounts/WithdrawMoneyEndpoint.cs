@@ -8,7 +8,7 @@ public static class WithdrawMoneyEndpoint
 
     public static RouteGroupBuilder MapWithdrawMoney(this RouteGroupBuilder group)
     {
-        group.MapPost("/{accountId}/withdrawals", async (Guid accountId, Request request, WithdrawMoney useCase) =>
+        group.MapPost("/{accountId}/withdrawals", async (Guid accountId, Request request, IWithdrawMoney useCase) =>
                 TypedResults.Ok(await useCase.Handle(new WithdrawMoneyCommand(accountId, request.Amount))))
             .WithName(nameof(WithdrawMoney))
             .WithSummary("Withdraw money")

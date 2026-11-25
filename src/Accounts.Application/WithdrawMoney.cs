@@ -7,7 +7,12 @@ public sealed record WithdrawMoneyCommand(Guid AccountId, decimal Amount);
 
 public sealed record WithdrawMoneyResult(Guid AccountId, decimal Balance);
 
-public sealed class WithdrawMoney(IAccounts accounts)
+public interface IWithdrawMoney
+{
+    Task<WithdrawMoneyResult> Handle(WithdrawMoneyCommand command);
+}
+
+public sealed class WithdrawMoney(IAccounts accounts) : IWithdrawMoney
 {
     public async Task<WithdrawMoneyResult> Handle(WithdrawMoneyCommand command)
     {

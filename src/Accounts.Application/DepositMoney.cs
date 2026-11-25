@@ -7,7 +7,12 @@ public sealed record DepositMoneyCommand(Guid AccountId, decimal Amount);
 
 public sealed record DepositMoneyResult(Guid AccountId, decimal Balance);
 
-public sealed class DepositMoney(IAccounts accounts)
+public interface IDepositMoney
+{
+    Task<DepositMoneyResult> Handle(DepositMoneyCommand command);
+}
+
+public sealed class DepositMoney(IAccounts accounts) : IDepositMoney
 {
     public async Task<DepositMoneyResult> Handle(DepositMoneyCommand command)
     {

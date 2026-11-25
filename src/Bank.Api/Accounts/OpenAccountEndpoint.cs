@@ -8,7 +8,7 @@ public static class OpenAccountEndpoint
 
     public static RouteGroupBuilder MapOpenAccount(this RouteGroupBuilder group)
     {
-        group.MapPost("/", async (Request request, OpenAccount useCase) =>
+        group.MapPost("/", async (Request request, IOpenAccount useCase) =>
             {
                 var result = await useCase.Handle(new OpenAccountCommand(request.HolderName));
                 return TypedResults.Created($"/api/accounts/{result.AccountId}", result);

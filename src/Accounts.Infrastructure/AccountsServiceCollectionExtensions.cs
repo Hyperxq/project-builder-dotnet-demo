@@ -9,11 +9,11 @@ public static class AccountsServiceCollectionExtensions
     public static IServiceCollection AddAccounts(this IServiceCollection services)
     {
         services.AddSingleton<IAccounts, InMemoryAccounts>();
-        services.AddScoped<OpenAccount>();
-        services.AddScoped<DepositMoney>();
-        services.AddScoped<WithdrawMoney>();
-        services.AddScoped<GetBalance>();
-        services.AddScoped<MoveMoney>();
+        services.AddScoped<IOpenAccount, OpenAccount>();
+        services.AddScoped<IDepositMoney, DepositMoney>();
+        services.AddScoped<IWithdrawMoney, WithdrawMoney>();
+        services.AddScoped<IGetBalance, GetBalance>();
+        services.AddScoped<IMoveMoney, MoveMoney>();
         return services;
     }
 }

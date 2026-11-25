@@ -7,7 +7,12 @@ public sealed record GetBalanceCommand(Guid AccountId);
 
 public sealed record GetBalanceResult(Guid AccountId, string HolderName, decimal Balance);
 
-public sealed class GetBalance(IAccounts accounts)
+public interface IGetBalance
+{
+    Task<GetBalanceResult> Handle(GetBalanceCommand command);
+}
+
+public sealed class GetBalance(IAccounts accounts) : IGetBalance
 {
     public async Task<GetBalanceResult> Handle(GetBalanceCommand command)
     {

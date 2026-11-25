@@ -7,7 +7,12 @@ public sealed record OpenAccountCommand(string HolderName);
 
 public sealed record OpenAccountResult(Guid AccountId, string HolderName, decimal Balance);
 
-public sealed class OpenAccount(IAccounts accounts)
+public interface IOpenAccount
+{
+    Task<OpenAccountResult> Handle(OpenAccountCommand command);
+}
+
+public sealed class OpenAccount(IAccounts accounts) : IOpenAccount
 {
     public async Task<OpenAccountResult> Handle(OpenAccountCommand command)
     {

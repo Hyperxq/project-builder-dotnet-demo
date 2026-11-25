@@ -8,7 +8,7 @@ public static class DepositMoneyEndpoint
 
     public static RouteGroupBuilder MapDepositMoney(this RouteGroupBuilder group)
     {
-        group.MapPost("/{accountId}/deposits", async (Guid accountId, Request request, DepositMoney useCase) =>
+        group.MapPost("/{accountId}/deposits", async (Guid accountId, Request request, IDepositMoney useCase) =>
                 TypedResults.Ok(await useCase.Handle(new DepositMoneyCommand(accountId, request.Amount))))
             .WithName(nameof(DepositMoney))
             .WithSummary("Deposit money")
