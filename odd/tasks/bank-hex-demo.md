@@ -1,11 +1,11 @@
 # bank-hex-demo
 
 Objective: hexagonal ASP.NET banking backend plus pbuilder schematics that automate endpoint creation, docs-first and driven by Gherkin, ready to demo on 2026-11-26.
-Branch: main (fresh repo). Delivery: local only, ask-on-risk. Test runner: `dotnet test` (Reqnroll for Gherkin, xUnit), `bun test` for schematics.
+Branch: feat/bank-hex-demo (fresh repo). Delivery: local only, ask-on-risk. Test runner: `dotnet test` (Reqnroll on NUnit for Gherkin), `bun test` for schematics.
 
 ## Specs
 
-- S1 — Stack: C# / ASP.NET, `net10.0`, `.slnx` solution, one project per layer per bounded context (`<Ctx>.Domain`, `<Ctx>.Application`, `<Ctx>.Infrastructure`) plus `Bank.Api`.
+- S1 — Stack: C# / ASP.NET, `net11.0` (only the .NET 11 runtime is installed), `.slnx` solution, one project per layer per bounded context (`<Ctx>.Domain`, `<Ctx>.Application`, `<Ctx>.Infrastructure`) plus `Bank.Api`.
 - S2 — Schematics (inside this repo): `hex-context`, `hex-driven-port`, `hex-use-case`, `hex-endpoint`, using the `csharp`, `aspnet` and `msbuild` dialects. User: "me parece el 1".
 - S3 — Staged plan: "me gustaria hacer un plan por etapas para hacer toda la idea junto con crear primero la documentacion y luego la implementacion usando gherkin".
 - S4 — Domain: "hagamolo para una app de bancos".
@@ -24,8 +24,8 @@ Branch: main (fresh repo). Delivery: local only, ask-on-risk. Test runner: `dotn
 
 | ID | Stage | Specs | Route | Status | Commit |
 |---|---|---|---|---|---|
-| T1 | E0 | S1 | inline | pending | |
-| T2 | E1 | S3, S4, S5 | inline | pending | |
+| T1 | E0 | S1 | inline | done — health scenario GREEN | ec7066a, b890ad5 |
+| T2 | E1 | S3, S4, S5 | inline | done — docs only, features tagged `@draft` | b0ed309 |
 | T3 | E2 | S1, S3 | inline | pending | |
 | T4 | E3 | S2, S5 | inline | pending | |
 | T5 | E4 | S2, S3 | inline | pending | |
@@ -37,3 +37,5 @@ Branch: main (fresh repo). Delivery: local only, ask-on-risk. Test runner: `dotn
 - L2: stack chosen: "C# / ASP.NET".
 - L3: "me parece el 1. Ahora bien, me gustaria hacer un plan por etapas para hacer toda la idea junto con crear primero la documentacion y luego la implementacion usando gherkin"
 - L4: "hagamolo para una app de bancos"
+- L5: "Si me parece hacer E0 y E1 hoy". E0 + E1 done. Target moved to net11.0 (only runtime installed). Reqnroll.NUnit 3.3.4 chosen (Reqnroll docs: xUnit is less practical for integration tests).
+- L6 next: E2 must wire docs/**/*.feature into Bank.Acceptance (one source of truth) — verify Reqnroll supports feature files outside the project dir. Global fish vars BUILDER_MANIFEST/BUILDER_SDK_ROOT point at lcwebapp-schematics: every `builder execute` here needs `--manifest .` (or the env overridden). Engram mirror pending: the repo is not a known engram project.
