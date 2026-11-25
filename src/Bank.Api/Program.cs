@@ -1,6 +1,7 @@
 using Bank.Api.Accounts;
 using Bank.Api.Errors;
 using Bank.Kernel;
+using Bank.Api.Transfers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,7 @@ builder.Services.AddProblemDetails(options =>
 builder.Services.AddExceptionHandler<DomainErrorHandler>();
 
 builder.Services.AddAccounts();
+builder.Services.AddTransfers();
 
 var app = builder.Build();
 
@@ -28,5 +30,6 @@ api.MapGet("/health", () => Results.Ok(new { status = "ok" }))
     .WithSummary("Reports that the API is up");
 
 api.MapAccountsEndpoints();
+api.MapTransfersEndpoints();
 
 app.Run();

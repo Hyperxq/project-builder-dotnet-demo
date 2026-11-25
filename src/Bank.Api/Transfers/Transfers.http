@@ -1,0 +1,15 @@
+@baseUrl = http://localhost:5069
+@transferId = 00000000-0000-0000-0000-000000000000
+
+### Transfer money
+POST {{baseUrl}}/api/transfers
+Content-Type: application/json
+
+{
+  "fromAccountId": "00000000-0000-0000-0000-000000000000",
+  "toAccountId": "00000000-0000-0000-0000-000000000000",
+  "amount": 10.00
+}
+
+### Get a transfer
+GET {{baseUrl}}/api/transfers/{{transferId}}

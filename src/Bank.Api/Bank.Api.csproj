@@ -13,6 +13,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Accounts.Application\Accounts.Application.csproj" />
     <ProjectReference Include="..\Accounts.Infrastructure\Accounts.Infrastructure.csproj" />
+    <ProjectReference Include="..\Transfers.Application\Transfers.Application.csproj" />
+    <ProjectReference Include="..\Transfers.Infrastructure\Transfers.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
