@@ -2,7 +2,7 @@
 Feature: Get the balance
   A holder reads how much money their account holds.
 
-  @rule-6
+  @rule-9
   Rule: the balance is read from an existing account
 
     Scenario: a holder reads their balance

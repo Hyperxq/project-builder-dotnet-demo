@@ -1,16 +1,19 @@
 @draft
 Feature: Deposit money
-  A holder puts money into their account and sees the new balance.
+  A holder puts money into their account from outside the bank and sees the new balance.
 
   Background:
     Given "Ana Smith" has an account with a balance of 100.00
 
-  @rule-3
-  Rule: a deposit adds its amount to the balance
+  @rule-4
+  Rule: a deposit raises the balance by its amount
 
     Scenario: a deposit raises the balance
       When 50.25 is deposited into Ana's account
       Then Ana's balance is 150.25
+
+  @rule-3
+  Rule: the amount is more than zero with at most two decimal places
 
     Scenario Outline: an invalid amount is refused
       When <amount> is deposited into Ana's account
@@ -23,7 +26,7 @@ Feature: Deposit money
         | -10.00 |
         | 10.001 |
 
-  @rule-4
+  @rule-5
   Rule: a single deposit is at most 10,000.00
 
     Scenario: the largest deposit is accepted
@@ -35,7 +38,7 @@ Feature: Deposit money
       Then the request is refused with "accounts.deposit_limit_exceeded"
       And Ana's balance is 100.00
 
-  @rule-6
+  @rule-9
   Rule: the account must exist
 
     Scenario: a deposit into an unknown account

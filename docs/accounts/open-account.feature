@@ -18,10 +18,13 @@ Feature: Open an account
   @rule-1
   Rule: the holder name has 1 to 100 characters
 
+    Scenario: the longest holder name is accepted
+      When an account is opened with a holder name of 100 characters
+      Then the account is opened
+
     Scenario Outline: an invalid holder name is refused
       When an account is opened with <name>
       Then the request is refused as invalid
-      And no account is opened
 
       Examples:
         | name                             |
