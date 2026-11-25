@@ -1,0 +1,15 @@
+{
+  "properties": {
+    "context": {
+      "type": "string",
+      "label": "Bounded context in PascalCase, already created by hex-context (e.g. Transfers)",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "label": "Use case in PascalCase, a row of the Use cases table in docs/<context>/domain-model.md (e.g. TransferMoney)",
+      "required": true
+    }
+  },
+  "description": "New use case of a context, read from its row in the Use cases table of docs/<context>/domain-model.md: src/<Context>.Application/<Name>.cs with the command and result records, the driving port I<Name>, and the handler receiving each listed driven port through its primary constructor, its Handle left to write by hand, plus its scoped registration in Add<Context>(). Each driven port must exist first (hex-driven-port). Run again after adding a driven port to the row: it adds the missing constructor parameters to the existing handler and changes nothing else."
+}

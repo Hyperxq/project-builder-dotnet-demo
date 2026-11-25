@@ -488,3 +488,6 @@ $RECYCLE.BIN/
 
 # Reqnroll generated code
 *.feature.cs
+
+# Maps @pbuilder/sdk to the global SDK for bun test; machine-specific
+tsconfig.json

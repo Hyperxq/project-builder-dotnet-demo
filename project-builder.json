@@ -1,7 +1,21 @@
 {
   "$schema": "./node_modules/@pbuilder/sdk/schemas/project-builder.schema.json",
-  "version": "1",
-  "collections": {},
+  "collections": {
+    "default": {
+      "hex-context": {
+        "path": "./schematics/hex-context"
+      },
+      "hex-driven-port": {
+        "path": "./schematics/hex-driven-port"
+      },
+      "hex-endpoint": {
+        "path": "./schematics/hex-endpoint"
+      },
+      "hex-use-case": {
+        "path": "./schematics/hex-use-case"
+      }
+    }
+  },
   "dependencies": {},
   "settings": {
     "autoInstall": true,
@@ -14,5 +28,6 @@
   "skill": {
     "enabled": true,
     "path": ".claude/skills/pbuilder/SKILL.md"
-  }
+  },
+  "version": "1"
 }

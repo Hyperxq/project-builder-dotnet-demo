@@ -1,0 +1,15 @@
+{
+  "properties": {
+    "context": {
+      "type": "string",
+      "label": "Bounded context in PascalCase, already created by hex-context (e.g. Transfers)",
+      "required": true
+    },
+    "port": {
+      "type": "string",
+      "label": "Driven port in PascalCase, a row of the Driven ports table in docs/<context>/domain-model.md (e.g. TransferLog)",
+      "required": true
+    }
+  },
+  "description": "New driven port of a context, read from its row in the Driven ports table of docs/<context>/domain-model.md: the interface src/<Context>.Application/Ports/I<Port>.cs with one method per Answers entry and the Contract as its summary, the adapter named in Adapter today as a stub in src/<Context>.Infrastructure whose methods are written by hand, and its registration in Add<Context>() (singleton for an InMemory adapter, scoped otherwise). Run it before hex-use-case for any use case that lists the port."
+}

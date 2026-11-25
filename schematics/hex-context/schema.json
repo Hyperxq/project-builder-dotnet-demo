@@ -1,0 +1,10 @@
+{
+  "properties": {
+    "context": {
+      "type": "string",
+      "label": "Bounded context in PascalCase, documented first in docs/<context>/domain-model.md (e.g. Transfers)",
+      "required": true
+    }
+  },
+  "description": "New bounded context, once docs/<context>/domain-model.md exists: the three projects src/<Context>.Domain (referencing Bank.Kernel), src/<Context>.Application and src/<Context>.Infrastructure with its Add<Context>() registration, the three entries in Bank.slnx, the project references and the Add<Context>() and Map<Context>Endpoints() calls in Bank.Api, plus the empty endpoint group src/Bank.Api/<Context>/<Context>Endpoints.cs and its <Context>.http. Run it before hex-driven-port, hex-use-case and hex-endpoint for that context."
+}
