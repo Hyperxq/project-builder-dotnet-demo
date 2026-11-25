@@ -92,6 +92,28 @@ All four live in this repo, in the `default` collection (`project-builder.json`)
 
 They parse the tables in `docs/<context>/domain-model.md`, so write the docs first and never rename a table column.
 
+### Which schematic, when
+
+Before hand-writing any of the shapes below, run its schematic. If the docs do not have the row yet, add the row first: a schematic that refuses with "document … first" is telling you the docs are behind.
+
+| You are about to… | Run | Not for |
+| --- | --- | --- |
+| start a new bounded context (new projects, solution entries, `Add<Context>()`, endpoint group) | `hex-context` | a folder or class inside an existing context |
+| add a dependency a use case needs from outside it (storage, another context, an external service) | `hex-driven-port`, after its Driven ports row | a port that already exists: write its adapter body by hand |
+| add a business action (command, result, driving port, handler) | `hex-use-case`, after its Use cases row | changing what an existing handler does |
+| give an existing use case a new driven port | add the port to its Use cases row, then `hex-use-case` again: it adds only the missing constructor parameters | removing a port: edit by hand |
+| expose a use case over HTTP | `hex-endpoint`, after its Driving adapters row | a use case only another context calls (like Accounts' `MoveMoney`): it gets no route |
+
+Always by hand, never generated:
+
+- domain types, value objects, errors and business rules (`<Context>.Domain`);
+- the body of every generated `Handle` and adapter method (they throw `NotImplementedException`);
+- an anti-corruption adapter that calls another context, like `AccountsContextGateway`, and its project reference to the other context's Application project;
+- changing or removing a route, a port method or a command field the schematics already generated: update the doc row and the code together, because a re-run never rewrites an existing file;
+- the Reqnroll step definitions in `tests/Bank.Acceptance/Steps/`.
+
+If a shape repeats a third time and none of the four fits, propose a new schematic instead of hand-writing it again (see "Changing or adding schematics").
+
 ### Running one
 
 From the repo root, one `builder execute` per shell call: never chain it with `&&`, `;` or a loop (the engine can die and the exit code gets lost).
