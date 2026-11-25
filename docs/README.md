@@ -34,6 +34,16 @@ Use case commands and results carry only primitives (`Guid`, `decimal`, `string`
 2. Write the scenario in the use case's `.feature`. It fails (RED).
 3. Generate the code the tables describe with the schematics, then write the domain rule by hand until the scenario passes (GREEN).
 
+## Running the features
+
+The features in this folder are the acceptance suite: `tests/Bank.Acceptance` links every `docs/**/*.feature` into Reqnroll, so there is no copy to keep in step.
+
+| Command | Runs |
+| --- | --- |
+| `dotnet test` | every scenario except those tagged `@draft` |
+| `dotnet test --filter Category=draft` | only the `@draft` scenarios, to see what is still pending |
+| `dotnet test --filter Category=rule-6` | the scenarios of one rule; tags on a `Rule:` reach its scenarios |
+
 ## What each schematic reads
 
 | Schematic | Reads | Generates |
