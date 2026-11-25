@@ -1,6 +1,10 @@
 <Solution>
   <Folder Name="/src/">
+    <Project Path="src/Accounts.Application/Accounts.Application.csproj" />
+    <Project Path="src/Accounts.Domain/Accounts.Domain.csproj" />
+    <Project Path="src/Accounts.Infrastructure/Accounts.Infrastructure.csproj" />
     <Project Path="src/Bank.Api/Bank.Api.csproj" />
+    <Project Path="src/Bank.Kernel/Bank.Kernel.csproj" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/Bank.Acceptance/Bank.Acceptance.csproj" />

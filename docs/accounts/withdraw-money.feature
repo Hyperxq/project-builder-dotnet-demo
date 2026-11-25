@@ -1,4 +1,3 @@
-@draft
 Feature: Withdraw money
   A holder takes money out of their account. The bank has no overdrafts, so a withdrawal never
   leaves the balance below zero.

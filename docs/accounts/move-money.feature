@@ -1,4 +1,3 @@
-@draft
 Feature: Move money between accounts
   The bank moves money from one account to another. Both balances change together, or neither
   does, so money is never lost or created inside the bank. A move is not a deposit, so the

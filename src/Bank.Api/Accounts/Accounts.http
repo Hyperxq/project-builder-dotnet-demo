@@ -1,0 +1,29 @@
+@baseUrl = http://localhost:5069
+@accountId = 00000000-0000-0000-0000-000000000000
+
+### Open an account
+POST {{baseUrl}}/api/accounts
+Content-Type: application/json
+
+{
+  "holderName": "Ana Smith"
+}
+
+### Deposit money
+POST {{baseUrl}}/api/accounts/{{accountId}}/deposits
+Content-Type: application/json
+
+{
+  "amount": 100.00
+}
+
+### Withdraw money
+POST {{baseUrl}}/api/accounts/{{accountId}}/withdrawals
+Content-Type: application/json
+
+{
+  "amount": 40.00
+}
+
+### Get the balance
+GET {{baseUrl}}/api/accounts/{{accountId}}/balance

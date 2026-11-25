@@ -1,4 +1,3 @@
-@draft
 Feature: Get the balance
   A holder reads how much money their account holds.
 

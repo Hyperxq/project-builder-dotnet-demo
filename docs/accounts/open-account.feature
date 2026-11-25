@@ -1,4 +1,3 @@
-@draft
 Feature: Open an account
   A person opens a bank account in their name. It starts empty, and the bank gives it an id the
   person uses for every later operation.

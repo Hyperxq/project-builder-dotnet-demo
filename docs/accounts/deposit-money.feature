@@ -1,4 +1,3 @@
-@draft
 Feature: Deposit money
   A holder puts money into their account from outside the bank and sees the new balance.
 
