@@ -33,9 +33,10 @@ Feature: Transfer money
 
   @rule-2
   Rule: when the bank refuses to move the money, the transfer is refused in its own words
+    A refused transfer is never recorded, so it gets no transfer id to read back.
 
     Scenario: the source and destination are the same account
-      When Ana transfers 30.00 to her own account
+      When Ana transfers 30.00 from her account to the same account
       Then the request is refused with "transfers.same_account"
       And Ana's balance is 100.00
 
@@ -52,5 +53,6 @@ Feature: Transfer money
     Scenario: Ana transfers more than she has
       When Ana transfers 100.01 to Ben
       Then the request is refused with "transfers.insufficient_funds"
+      And no transfer id is given
       And Ana's balance is 100.00
       And Ben's balance is 20.00

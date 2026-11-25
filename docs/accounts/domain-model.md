@@ -54,6 +54,8 @@ The value objects enforce rules 1, 3 and 6, whoever calls the use case. The HTTP
 | `DepositLimitExceeded` | `accounts.deposit_limit_exceeded` | 422 | `DepositMoney` (rule 5) |
 | `InsufficientFunds` | `accounts.insufficient_funds` | 422 | `WithdrawMoney`, `MoveMoney` (rule 6) |
 | `SameAccount` | `accounts.same_account` | 422 | `MoveMoney` (rule 8) |
+| `InvalidHolderName` | `validation.failed` | 400 | `OpenAccount` (rule 1), when a caller skips the HTTP edge |
+| `InvalidAmount` | `validation.failed` | 400 | `DepositMoney`, `WithdrawMoney`, `MoveMoney` (rule 3), when a caller skips the HTTP edge |
 
 `MoveMoney` checks in this order and stops at the first refusal: different accounts (rule 8), both exist (rule 9), enough balance (rule 6).
 
